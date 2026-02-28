@@ -4,16 +4,16 @@ import sympy as sp
 def simp_frac(nums, D):
     ret = []
     for coordinate in nums:
-        if cordinate%D != 0:
-            gcf = gcd(cordinate, D)
-            n=round(cordinate/gcf)
+        if coordinate%D != 0:
+            gcf = gcd(coordinate, D)
+            n=round(coordinate/gcf)
             d=round(D/gcf)
             if d < 0 and n < 0:
                 n = abs(n)
                 d = abs(d)
             ret.append(str(f"{n}/{d}"))
         else:
-            ret.append(round(cordinate/D))
+            ret.append(round(coordinate/D))
     return ret
 
 st.title("Matrix Solver (Cramer's Method)")
