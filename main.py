@@ -75,7 +75,7 @@ elif type == "3x3":
             C = sp.Matrix([[e["a11"], e["a12"], e["a13"]], [e["a21"], e["a22"], e["a23"]], [e["a31"], e["a32"], e["a33"]]])
             S = sp.Matrix([e["s1"], e["s2"], e["s3"]])
             x, y, z = sp.symbols('x y z')
-            st.info(f"{sp.linsolve((C, S), (x, y, z)).args[0]}")
+            st.success(f"{sp.linsolve((C, S), (x, y, z)).args[0]}")
         elif D == 0:
             st.error("No Solution")
         else:
