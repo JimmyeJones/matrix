@@ -24,13 +24,13 @@ if type == "2x2":
     e = {}
     for gg in range(1,3):
         col1, i1, col2, i2, col3 = container.columns(5)
-        x1 = col1.number_input("X coefficient", value=0, key=f"x1{gg}")
+        x1 = col1.number_input("", value=0, key=f"x1{gg}")
         i1.markdown("")
         i1.subheader("  X + ")
-        y1 = col2.number_input("Y coefficient", value=0, key=f"y1{gg}")
+        y1 = col2.number_input("", value=0, key=f"y1{gg}")
         i2.markdown("")
         i2.subheader("  Y = ")
-        sol1 = col3.number_input("Solution", value=0, key=f"sol{gg}")
+        sol1 = col3.number_input("", value=0, key=f"sol{gg}")
         e[f"a{gg}1"] = x1
         e[f"a{gg}2"] = y1
         e[f"s{gg}"] = sol1
