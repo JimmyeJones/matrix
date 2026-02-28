@@ -1,3 +1,2 @@
-math
 sympy
 streamlit
