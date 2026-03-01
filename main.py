@@ -17,7 +17,7 @@ def get_num(id, st_val):
         elif inp == "":
             return 0
         else:
-            return int(inp)
+            return float(inp)
     except ValueError:
         st.error("Invalid input! Please enter a number or a fraction.")
         return 0
