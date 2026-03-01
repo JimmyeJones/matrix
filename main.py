@@ -1,6 +1,26 @@
 import streamlit as st
 from math import gcd
 import sympy as sp
+def get_num(id, st_val):
+    try:
+        inp = st_val.input("", value=0, key=id)
+        if "/" in inp:
+            num, den = inp.split("/")
+            num = int(num)
+            den = int(den)
+            if den < 0 and num < 0:
+                num = abs(num)
+                den = abs(den)
+            return num/den
+        elif "." in inp:
+            return float(inp)
+        elif inp == "":
+            return 0
+        else:
+            return int(inp)
+    except ValueError:
+        st.error("Invalid input! Please enter a number or a fraction.")
+        return 0
 def simp_frac(nums, D):
     ret = []
     for coordinate in nums:
@@ -24,13 +44,13 @@ if type == "2x2":
     e = {}
     for gg in range(1,3):
         col1, i1, col2, i2, col3 = container.columns(5)
-        x1 = col1.number_input("", value=0, step=1, key=f"x1{gg}")
+        x1 = get_num(f"x1{gg}", col1)
         i1.markdown("")
         i1.subheader("  X + ")
-        y1 = col2.number_input("", value=0, step=1, key=f"y1{gg}")
+        y1 = get_num(f"y1{gg}", col2)
         i2.markdown("")
         i2.subheader("  Y = ")
-        sol1 = col3.number_input("", value=0, step=1, key=f"sol{gg}")
+        sol1 = get_num(f"sol{gg}", col3)
         e[f"a{gg}1"] = x1
         e[f"a{gg}2"] = y1
         e[f"s{gg}"] = sol1
@@ -55,16 +75,16 @@ elif type == "3x3":
     e = {}
     for gg in range(1,4):
         col1, i1, col2, i2, col3, i3, col4 = container.columns(7)
-        x1 = col1.number_input("", value=0, key=f"x1{gg}")
+        x1 = get_num(f"x1{gg}", col1)
         i1.markdown("")
         i1.subheader("  X + ")
-        y1 = col2.number_input("", value=0, key=f"y1{gg}")
+        y1 = get_num(f"y1{gg}", col2)
         i2.markdown("")
         i2.subheader("  Y + ")
-        z1 = col3.number_input("", value=0, key=f"z1{gg}")
+        z1 = get_num(f"z1{gg}", col3)
         i3.markdown("")
         i3.subheader("  Z = ")
-        sol1 = col4.number_input("", value=0, key=f"sol{gg}")
+        sol1 = get_num(f"sol{gg}", col4)
         e[f"a{gg}1"] = x1
         e[f"a{gg}2"] = y1
         e[f"a{gg}3"] = z1
