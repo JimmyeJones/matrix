@@ -1,5 +1,5 @@
 import streamlit as st
-from math import gcd
+from fractions import Fraction
 import sympy as sp
 def get_num(id, st_val):
     try:
@@ -23,17 +23,17 @@ def get_num(id, st_val):
         return 0
 def simp_frac(nums, D):
     ret = []
+    D_frac = Fraction(D).limit_denominator()
+    
     for coordinate in nums:
-        if coordinate%D != 0:
-            gcf = gcd(coordinate, D)
-            n=round(coordinate/gcf)
-            d=round(D/gcf)
-            if d < 0 and n < 0:
-                n = abs(n)
-                d = abs(d)
-            ret.append(str(f"{n}/{d}"))
+        coord_frac = Fraction(coordinate).limit_denominator()
+        result = coord_frac / D_frac
+        
+        if result.denominator == 1:
+            ret.append(str(int(result)))
         else:
-            ret.append(round(coordinate/D))
+            ret.append(str(result))
+    
     return ret
 
 st.title("Matrix Solver (Cramer's Method)")
