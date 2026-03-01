@@ -3,7 +3,7 @@ from math import gcd
 import sympy as sp
 def get_num(id, st_val):
     try:
-        inp = st_val.input("", value=0, key=id)
+        inp = st_val.text_input("", value=0, key=id)
         if "/" in inp:
             num, den = inp.split("/")
             num = int(num)
